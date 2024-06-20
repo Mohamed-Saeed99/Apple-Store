@@ -1,0 +1,351 @@
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!isLoading">
+
+  <body>
+    <main>
+      <section class="position-relative mb-5 video-parent" id="ipad-video">
+        <div class="container">
+          <div class="row" [@fadeInRightBig]>
+            <video autoplay loop playsinline width="100%" class="ipad-video">
+              <source src="https://www.apple.com/105/media/us/ipad/2024/45762adb-901a-4726-8b0c-1f3ee092b09a/anim/welcome-hero/xlarge_2x.mp4" type="video/mp4" class="mac-video">
+            </video>
+          </div>
+        </div>
+      </section>
+      <button class="top" (click)="scrollToTop()" #topButton>
+        <a href="#ipad-video"><i class="fa-solid fa-arrow-up-long"></i></a>
+      </button>
+    </main>
+    <section class="ipad-data">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor="let ipad of ipadData; let i = index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="ipad.id <= 3">
+                    <img [src]="ipad.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ipad.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{ipad.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="ipad.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{ipad.name}}</h1>
+                                <p>price:<span>{{ipad.price|currency}}</span></p>
+                                <p>usb:<span>{{ipad.usb}}</span></p>
+                                <p>chip:<span>{{ipad.chip}}</span></p>
+                                <p>keyboard:<span>{{ipad.keyboard}}</span></p>
+                                <p>color:<span>{{ipad.color}}</span></p>
+                                <p>display:<span>{{ipad.display}}</span></p>
+                                <p>inch:<span>{{ipad.inch}}</span></p>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
+                                    class="logo-details">
+                                  <span>{{ipad.camera}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
+                                  <span>{{ipad.capable}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
+                                  <span>{{ipad.lid}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(ipad)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor=" let ipad of ipadData; let i=index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="ipad.id > 3 && ipad.id <=6">
+                    <img [src]="ipad.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ipad.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{ipad.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="ipad.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{ipad.name}}</h1>
+                                <p>price:<span>{{ipad.price|currency}}</span></p>
+                                <p>usb:<span>{{ipad.usb}}</span></p>
+                                <p>chip:<span>{{ipad.chip}}</span></p>
+                                <p>keyboard:<span>{{ipad.keyboard}}</span></p>
+                                <p>color:<span>{{ipad.color}}</span></p>
+                                <p>display:<span>{{ipad.display}}</span></p>
+                                <p>inch:<span>{{ipad.inch}}</span></p>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
+                                    class="logo-details">
+                                  <span>{{ipad.camera}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
+                                  <span>{{ipad.capable}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
+                                  <span>{{ipad.lid}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(ipad)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <section class="ipad-data">
+      <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor="let ipad of ipadData; let i = index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="ipad.id >6 && ipad.id<= 9">
+                    <img [src]="ipad.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ipad.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+                      <!-- Modal with dynamically generated ID -->
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{ipad.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="ipad.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{ipad.name}}</h1>
+                                <p>price:<span>{{ipad.price|currency}}</span></p>
+                                <p>usb:<span>{{ipad.usb}}</span></p>
+                                <p>chip:<span>{{ipad.chip}}</span></p>
+                                <p>keyboard:<span>{{ipad.keyboard}}</span></p>
+                                <p>color:<span>{{ipad.color}}</span></p>
+                                <p>display:<span>{{ipad.display}}</span></p>
+                                <p>inch:<span>{{ipad.inch}}</span></p>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
+                                    class="logo-details">
+                                  <span>{{ipad.camera}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
+                                  <span>{{ipad.capable}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
+                                  <span>{{ipad.lid}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(ipad)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor=" let ipad of ipadData; let i=index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="ipad.id > 9 && ipad.id <=12">
+                    <img [src]="ipad.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ipad.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+                      <!-- Modal with dynamically generated ID -->
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{ipad.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="ipad.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{ipad.name}}</h1>
+                                <p>price:<span>{{ipad.price|currency}}</span></p>
+                                <p>usb:<span>{{ipad.usb}}</span></p>
+                                <p>chip:<span>{{ipad.chip}}</span></p>
+                                <p>keyboard:<span>{{ipad.keyboard}}</span></p>
+                                <p>color:<span>{{ipad.color}}</span></p>
+                                <p>display:<span>{{ipad.display}}</span></p>
+                                <p>inch:<span>{{ipad.inch}}</span></p>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
+                                    class="logo-details">
+                                  <span>{{ipad.camera}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
+                                  <span>{{ipad.capable}}</span>
+                                </div>
+                                <div class="specification">
+                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
+                                  <span>{{ipad.lid}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(ipad)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval2"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <section class="more-ipad-section">
+      <div class="container more-ipad-parent">
+        <div class="row">
+          <div class="col-lg-6 more-ipad-1">
+            <img
+              src="https://www.apple.com/mideast/ipad/home/cj/images/overview/essentials/en/bc_keyboard__b2j4vh67cw76_xlarge.png"
+              class="mac-photo-under-data">
+            <div class="text-under-ipad-section">
+              <p class="new">New</p>
+              <h3 class="keyboard-ipad-header">Keyboards for iPad</h3>
+              <p class="para-ipad-section">Type it out. Take it with you.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 more-ipad-2">
+            <div class="text-up-ipad-section">
+              <p class="new">New</p>
+              <h3 class="apple-ipad-header">Apple Pencil</h3>
+              <p class="dream-ipad-section">Dream it up. Joy it down</p>
+            </div>
+            <img
+              src="https://www.apple.com/mideast/ipad/home/cj/images/overview/essentials/en/bc_pencil__b1ze600aojyq_xlarge.png"
+              class="one-logo">
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>

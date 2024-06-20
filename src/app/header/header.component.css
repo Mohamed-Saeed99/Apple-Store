@@ -1,0 +1,206 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.navbar {
+  background-color: rgba(0, 0, 0, .8);
+  padding: 2px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+@media (max-width:992px) {
+  .navbar {
+    position: relative;
+    width: 100%;
+    z-index: 999;
+  }
+}
+
+
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link,
+.navbar-brand {
+  color: rgba(255, 255, 255, .8);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: 1;
+}
+
+.nav-link {
+  margin: 0px 20px;
+}
+
+.nav-link:hover,
+.fab:hover {
+  color: white;
+  text-decoration: white;
+}
+
+.fab,
+.fa-solid {
+  color: rgba(255, 255, 255, .8);
+  font-size: 14px;
+}
+
+.navbar-brand {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ------------------------cart body----------------------------- */
+.offcanvas-body {
+  padding: 20px;
+  background-color: #f2f2f7;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.cart-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1c1c1e;
+}
+
+.cart-item-details p {
+  margin: 5px 0 0;
+  color: #8e8e93;
+  font-size: 0.9rem;
+}
+
+.total-price {
+  margin-top: 20px;
+  padding: 10px 0;
+  font-weight: bold;
+  text-align: right;
+  background-color: #f2f2f7;
+  border-top: 1px solid #e0e0e0;
+}
+
+.total-price h5 {
+  margin: 0;
+  color: #1c1c1e;
+  font-size: 1.1rem;
+}
+
+/* --------------------------number of cart --------------- */
+.number-of-cart {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* ----------------------------check out -------------------------- */
+/* CSS for Apple-inspired checkout button */
+.checkout-button {
+  background-color: #0070c9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #0056a0;
+}
+
+/* CSS for Apple-inspired invoice section */
+.invoice {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.invoice-header h3 {
+  color: #333;
+}
+
+.invoice-item {
+  margin-bottom: 10px;
+}
+
+.total-price {
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* Close button style */
+.btn-close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+.confirm-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.confirm-button:hover {
+  background-color: #45a049;
+}

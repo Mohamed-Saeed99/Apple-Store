@@ -1,0 +1,326 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.apple-video {
+  object-fit: cover;
+  height: 580px;
+}
+
+.apple-header2 {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.apple-logo {
+  padding-right: 8px;
+
+}
+
+.apple-header3 {
+  position: absolute;
+  top: 69%;
+  left: 52%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  width: 32%;
+}
+
+@media (max-width:712px) {
+
+  .apple-header2 {
+    font-size: 40px;
+  }
+
+  .apple-header3 {
+    font-size: 20px;
+  }
+}
+
+.ipad-home-parent {
+  position: relative;
+}
+
+.Ipad-home-section {
+  height: 580px;
+  background-image: url("https://www.apple.com/v/home/bn/images/heroes/ipad-air/hero_ipadair__flhdv47anjqu_large_2x.jpg");
+}
+
+.ipad-home-photo1 {
+  width: 25%;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width:950px) {
+  .ipad-home-photo1 {
+    width: 35%;
+  }
+}
+
+@media (max-width:600px) {
+  .ipad-home-photo1 {
+    width: 45%;
+  }
+}
+
+@media (max-width:450px) {
+  .ipad-home-photo1 {
+    width: 60%;
+  }
+
+  .apple-header3 {
+    width: 60%;
+  }
+}
+
+@media (max-width:300px) {
+  .ipad-home-photo1 {
+    width: 70%;
+  }
+
+  .apple-header3 {
+    top: 75%;
+    width: 60%;
+    font-size: 16px;
+  }
+}
+
+.ipad-home-photo2 {
+  width: 8%;
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  transform: translateX(-50%);
+}
+
+.ipad-home-para {
+  color: #1d1d1f;
+  text-align: center;
+  font-size: 28px;
+  line-height: 1.14286;
+  font-weight: 400;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 79%;
+}
+
+.learn-home-ipad {
+  color: white;
+  background: #1D1D1F;
+  outline: none;
+  text-decoration: none;
+  font-size: 17px;
+  line-height: 1.17648;
+  font-weight: 400;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  border-style: solid #272729;
+  padding: 15px 30px;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 87%;
+}
+
+.learn-home-ipad:hover {
+  background: #272729
+}
+
+@media (max-width:950px) {
+  .ipad-home-photo2 {
+    left: 50%;
+    top: 65%;
+    transform: translateX(-50%);
+  }
+
+  .ipad-home-para {
+    top: 75%;
+  }
+}
+
+@media (max-width:676px) {
+  .ipad-home-photo2 {
+    width: 20%;
+  }
+
+}
+
+@media (max-width:434px) {
+  .ipad-home-para {
+    font-size: 24px;
+    top: 70%;
+  }
+}
+
+.sections {
+  height: 1250px;
+}
+
+@media (max-width:992px) {
+  .sections {
+    height: 2460px;
+  }
+}
+
+.mac-home {
+  height: 570px;
+}
+
+.photo1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.sections-details {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.header-section1,
+.header-section2 {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #1d1d1f;
+  text-align: center;
+}
+
+.header-section1 {
+  color: #fff;
+}
+
+.para-section1 {
+  font-size: 21px;
+  line-height: 1.19048;
+  font-weight: 400;
+  letter-spacing: .011em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #fff;
+}
+
+.more-sections {
+  text-align: center;
+  background: #272729;
+  outline: none;
+  text-decoration: none;
+  border-style: solid #272729;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+  line-height: 1.42859;
+  font-weight: 400;
+  letter-spacing: -.016em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background: #006EDB;
+  color: #fff;
+}
+
+.more-sections:hover {
+  background: #0077ED;
+  ;
+}
+
+.para-section2 {
+  font-size: 21px;
+  line-height: 1.19048;
+  font-weight: 400;
+  letter-spacing: .011em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #f5f5f7;
+}
+
+.header-section3 {
+  text-align: center;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #f5f5f7;
+}
+
+.para-section3 {
+  text-align: center;
+  font-size: 21px;
+  line-height: 1.19048;
+  font-weight: 400;
+  letter-spacing: .011em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #f5f5f7;
+}
+
+.last-section-details {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.header-section4 {
+  text-align: center;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #f5f5f7;
+}
+
+.para-section5 {
+  font-size: 21px;
+  line-height: 1.19048;
+  font-weight: 400;
+  letter-spacing: .011em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #f5f5f7;
+}
+
+/* --------------------------------------spinner-------------------------- */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid rgba(0, 0, 0, .8);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

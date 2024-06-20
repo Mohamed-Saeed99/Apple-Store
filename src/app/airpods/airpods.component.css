@@ -1,0 +1,612 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+body {
+  background-color: #f2f2f2;
+}
+
+/* --------------------------------video------------------------ */
+.video-parent {
+  height: 630px;
+}
+
+.airpods-video {
+  object-fit: cover;
+  position: relative;
+  top: 70px;
+  width: 100%;
+  height: 600px;
+  border-radius: 3%;
+}
+
+.airpods-video-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.airpods-pro-video {
+  color: #f5f5f7;
+  font-size: 120px;
+  line-height: .8;
+  font-weight: 600;
+  letter-spacing: -0.0018em;
+  font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+@media (max-width:767px) {
+  .airpods-pro-video {
+    font-size: 80px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width:300px) {
+  .airpods-pro-video {
+    font-size: 50px;
+  }
+}
+
+.para-airpods-video {
+  font-size: 21px;
+  line-height: 1.381002381;
+  font-weight: 700;
+  letter-spacing: .011em;
+  font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #f5f5f7;
+}
+
+/* -------------------------------------------airpods data--------------------------- */
+.show {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.airpods-data {
+  overflow: hidden;
+}
+
+.carousel-control-prev {
+  left: -80px;
+}
+
+.carousel-control-next {
+  right: -80px;
+}
+
+.product-card {
+  width: 28rem;
+  border-radius: 20px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+@media (max-width: 460px) {
+  .product-card {
+    width: 24rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-card {
+    width: 21rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-card {
+    width: 18rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-card {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 250px) {
+  .product-card {
+    width: 13rem;
+  }
+}
+
+@media (max-width: 200px) {
+  .product-card {
+    width: 10rem;
+  }
+}
+
+
+.product-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.product-image {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+
+.product-details {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.75rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 24px;
+  background-color: #0070c9;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+.product-button:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px);
+}
+
+
+.product-image-modal {
+  width: 300px;
+  margin-left: 10px;
+  height: 410px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-img-top {
+  transition: 0.5s ease, transform 0.3s ease;
+}
+
+
+.product-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.product-card .card-body {
+  padding: 20px;
+  padding: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card .card-text {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.product-card .card-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.product-card .btn-primary {
+  text-align: center;
+  align-self: center;
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  margin-top: 5px;
+  padding: 10px 30px 10px 30px;
+}
+
+.product-card .btn-primary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.carousel-item .d-flex {
+  justify-content: space-between;
+}
+
+@media (min-width: 992px) {
+  .carousel-item .d-flex {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}
+
+.col-lg-4 {
+  padding: 0 15px;
+}
+
+@media (max-width: 992px) {
+  .col-lg-4 {
+    padding: 0 0px;
+  }
+}
+
+/* ---------------------------------modal --------------------------- */
+.modal-content {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.modal-big {
+  width: 1000px;
+}
+
+@media (max-width: 914px) {
+  .modal-big {
+    width: 720px;
+  }
+}
+
+@media (max-width: 690px) {
+  .modal-big {
+    width: 520px;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal-big {
+    width: 350px;
+  }
+}
+
+@media (max-width: 350px) {
+  .modal-big {
+    width: 250px;
+  }
+}
+
+@media (max-width: 250px) {
+  .modal-big {
+    width: 150px;
+  }
+}
+
+
+.modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.modal-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal-img img {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-description {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-description h1 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.modal-description p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.modal-description p span {
+  font-weight: 600;
+}
+
+.modal-description .specification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  /* Space between each specification */
+}
+
+.modal-description .logo-details {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.modal-description .logo-details+span {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+  }
+
+  .modal-img,
+  .modal-description {
+    flex: none;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .modal-description {
+    margin-top: 20px;
+  }
+}
+
+
+
+.modal-close {
+  position: absolute;
+  left: 5px;
+
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
+}
+
+.modal-footer .btn {
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.modal-footer .btn-primary {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.modal-footer .minus,
+.modal-footer .plus {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+}
+
+.modal-footer .minus:hover,
+.modal-footer .plus:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.modal-footer .count {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 15px;
+  color: #333;
+}
+
+.modal-footer .count::selection {
+  background: none;
+}
+
+/* --------------------section under data-------------------- */
+.logo-details {
+  margin: 15px 6px 15px 0px;
+  width: 25px;
+  height: 20px;
+}
+
+.more-airpods-section {
+  padding-bottom: 50px;
+}
+
+
+.more-airpods-parent {
+  background-color: #fff;
+  height: 600px;
+  border-radius: 40px;
+}
+
+.more-airpods-icons {
+  position: relative;
+  top: 251px;
+  transform: translateY(-50%);
+  left: 120px;
+}
+
+@media (max-width:767px) {
+  .more-airpods-icons {
+    position: relative;
+    left: 5%;
+    transform: translateY(-50%);
+  }
+
+  .more-airpods-one {
+    display: none;
+  }
+}
+
+@media (max-width:480px) {
+  .airpods-pic-section {
+    width: 80%;
+  }
+
+}
+
+.more-airpods-one {
+  position: relative;
+  top: 370px;
+  transform: translateY(-50%);
+}
+
+.airpods-pic-section {
+  height: 500px;
+}
+
+.tile-subheadline {
+  max-width: 420px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font-size: 28px;
+  line-height: 1.14286;
+  font-weight: 600;
+  letter-spacing: .007em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  text-align: center;
+  color: #1d1d1f;
+}
+
+@media (max-width: 1024px) {
+  .more-airpods-section {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 992px) {
+  .more-airpods-section {
+    padding-bottom: 0px;
+  }
+}
+
+/* --------------------------------------spinner-------------------------- */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid rgba(0, 0, 0, .8);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------top button------------------------- */
+
+.top {
+  font-size: 14px;
+  padding: 15px 18px;
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 900ms ease 0s;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  z-index: 99;
+  opacity: 0;
+}
+
+.top:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-4px);
+  border: 2px solid rgb(33, 42, 47);
+}
+
+.top a {
+  color: #333;
+}
+
+.top:hover a {
+  color: rgb(33, 42, 47);
+}

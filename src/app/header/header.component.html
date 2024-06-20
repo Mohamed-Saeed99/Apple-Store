@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/Home">Apple</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="/Home"><i class="fab fa-apple"></i></a>
+        <a class="nav-link" routerLink="/Iphone">Iphone</a>
+        <a class="nav-link" routerLink="/Mac">Mac</a>
+        <a class="nav-link" routerLink="/Ipad">Ipad</a>
+        <a class="nav-link" routerLink="/Watch">Watch</a>
+        <a class="nav-link" routerLink="/AirPods">AirPods</a>
+      </div>
+    </div>
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"
+      aria-controls="cartOffcanvas"><i class="fa-solid fa-cart-shopping"></i><span *ngIf="cartItems.length > 0"
+        class="badge rounded-pill number-of-cart">{{cartItems.length}}</span></button>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+        <img [src]="item.image" alt="{{item.name}}" class="cart-item-image" />
+        <div class="cart-item-details">
+          <h5>{{item.name}}</h5>
+          <p>{{item.price | currency}}</p>
+        </div>
+        <button class="remove-button" (click)="removeFromCart(i)">X</button>
+      </div>
+      <div class="total-price">
+        <h5>Total: {{totalPrice | currency}}</h5>
+      </div>
+      <div class="checkout-actions">
+        <button class="checkout-button" (click)="showInvoice()">Checkout</button>
+      </div>
+    </div>
+    <ng-template #emptyCart>
+      <p>Your cart is empty.</p>
+    </ng-template>
+    <div *ngIf="showInvoiceFlag" class="invoice">
+      <div class="invoice-header">
+        <h3 class="d-inline-block">Invoice</h3>
+        <button class="btn-close text-reset" (click)="hideInvoice()" aria-label="Close"></button>
+      </div>
+      <div *ngFor="let item of cartItems" class="invoice-item">
+        <h5>{{item.name}}</h5>
+        <p>{{item.price | currency}}</p>
+      </div>
+      <div class="total-price">
+        <h5>Total: {{totalPrice | currency}}</h5>
+        <button class="confirm-button" (click)="confirmCheckout()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

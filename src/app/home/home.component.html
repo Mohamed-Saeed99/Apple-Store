@@ -1,0 +1,83 @@
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!isLoading">
+  <main>
+    <section class="position-relative">
+      <video autoplay loop playsinline muted width="100%" class="apple-video">
+        <source
+          src="https://www.apple.com/105/media/us/home/2024/9ca55411-d96c-4ea2-9cec-9b5eff7d5e94/anim/2line/large.mp4"
+          type="video/mp4" class="apple-video">
+      </video>
+      <h2 class="apple-header2"><span class="apple-logo"><i class="fab fa-apple"></i></span>Apple</h2>
+      <h3 class="apple-header3">
+        Apple Worldwide Developers Conference. Join us online on our U.S. site 10-14 June.
+      </h3>
+    </section>
+    <section class="ipad-home-parent">
+      <div class="Ipad-home-section">
+        <img src="https://www.apple.com/v/ipad-air/w/images/overview/hero/hero_endframe__fvm22b45e5me_large.png"
+          class="ipad-home-photo1">
+        <img src="https://www.apple.com/v/ipad-air/w/images/overview/hero/hero_eyebrow_logo__ee6zpqgwfxm6_large.png"
+          class="ipad-home-photo2">
+        <p class="ipad-home-para">Two sizes. Faster chip. Does it all.</p>
+        <a class="button button-primary-dark learn-home-ipad" routerLink="/Ipad">Learn more</a>
+      </div>
+    </section>
+    <section class="sections">
+      <div class="container pt-3">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mac-home position-relative">
+              <img class="photo1"
+                src="https://images.pexels.com/photos/115655/pexels-photo-115655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+              <div class="sections-details">
+                <h2 class="header-section1">MacBook Air</h2>
+                <p class="para-section1">Lean. Mean. M3 machine.</p>
+                <a class="more-sections" routerLink="/Mac">Learn more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mac-home position-relative">
+              <img class="photo1"
+                src="https://img.freepik.com/free-photo/digital-display-measures-health-temperature-precision-ready-generated-by-ai_188544-13416.jpg?t=st=1718377311~exp=1718380911~hmac=e112906518ec3d551d0c235b40f8c846982846e7c7341a546336546810da5159&w=1060">
+              <div class="sections-details">
+                <h2 class="header-section2"><img
+                    src="https://www.apple.com/v/home/bn/images/logos/apple-watch-series-9/promo_logo_apple_watch_series_9__ckz0hbex0yeu_large.png">
+                </h2>
+                <p class="para-section2">Smarter. Brighter. Mightier.</p>
+                <a class="more-sections" routerLink="/Watch">learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mac-home mt-3 position-relative">
+              <img class="photo1"
+                src="https://www.apple.com/v/home/bn/images/promos/airpods-pro/promo_airpods_pro__erhb1guhr1si_large.jpg">
+              <div class="sections-details">
+                <h2 class="header-section3">AirPods Pro</h2>
+                <p class="para-section3">Adaptive Audio. Now playing.</p>
+                <a class="more-sections" routerLink="/AirPods">Learn more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mac-home mt-3 position-relative">
+              <img class="photo1"
+                src="https://www.apple.com/mideast/home/promos/tv-plus-device-offer/images/en/for-all-mankind/tile__cauwwcyyn9hy_xlarge.jpg">
+              <div class="last-section-details">
+                <h2 class="header-section4"><img
+                    src="https://www.apple.com/mideast/home/promos/tv-plus-device-offer/images/logo__dcojfwkzna2q_large.png">
+                </h2>
+                <p class="para-section5">coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

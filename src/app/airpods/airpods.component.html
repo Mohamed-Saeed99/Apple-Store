@@ -1,0 +1,174 @@
+<div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!isLoading">
+
+  <body>
+    <main>
+      <section class="position-relative mb-5 video-parent" id="airpods-video">
+        <div class="container">
+          <div class="row" [@fadeInRightBig]>
+            <video autoplay loop playsinline width="100%" class="airpods-video">
+              <source
+                src="https://www.apple.com/105/media/us/airpods/2022/dc1310af-8cb9-4218-8d40-26bbe6a1d307/anim/hero/large_2x.mp4"
+                type="video/mp4" class="mac-video">
+            </video>
+            <div class="airpods-video-details">
+              <h2 class="airpods-pro-video">AirPods Pro</h2>
+              <p class="para-airpods-video">2nd generation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <button class="top" (click)="scrollToTop()" #topButton>
+        <a href="#airpods-video"><i class="fa-solid fa-arrow-up-long"></i></a>
+      </button>
+    </main>
+    <section class="airpods-data">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor="let airpods of airpodsData; let i = index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="airpods.id <= 3">
+                    <img [src]="airpods.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{airpods.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{airpods.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="airpods.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{airpods.name}}</h1>
+                                <p>price:<span>{{airpods.price|currency}}</span></p>
+                                <p>listhening:<span>{{airpods.listhening}}</span></p>
+                                <p>chip:<span>{{airpods.chip}}</span></p>
+                                <p>color:<span>{{airpods.color}}</span></p>
+                                <p>connectivity:<span>{{airpods.connectivity}}</span></p>
+                                <p>water:<span>{{airpods.water}}</span></p>
+                                <div class="specification">
+                                  <img
+                                    src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png"
+                                    class="logo-details">
+                                  <span>{{airpods.battery}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(airpods)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="airpods-data">
+      <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
+            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+              <ng-container *ngFor="let airpods of airpodsData; let i = index">
+                <div class="col-lg-4 mb-3">
+                  <div class="card p-5 product-card" *ngIf="airpods.id >3 && airpods.id<= 6">
+                    <img [src]="airpods.image" class="card-img-top product-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{airpods.name}}</h5>
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModal' + i">
+                        Buy Now
+                      </button>
+                      <!-- Modal with dynamically generated ID -->
+                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content modal-big">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{airpods.name}}</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex ">
+                              <div class="modal-img col-lg-6">
+                                <img [src]="airpods.image" class="card-img-top product-image-modal" alt="...">
+                              </div>
+                              <div class="modal-description col-lg-6">
+                                <h1>{{airpods.name}}</h1>
+                                <p>price:<span>{{airpods.price|currency}}</span></p>
+                                <p>listhening:<span>{{airpods.listhening}}</span></p>
+                                <p>chip:<span>{{airpods.chip}}</span></p>
+                                <p>color:<span>{{airpods.color}}</span></p>
+                                <p>connectivity:<span>{{airpods.connectivity}}</span></p>
+                                <p>water:<span>{{airpods.water}}</span></p>
+                                <div class="specification">
+                                  <img
+                                    src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png"
+                                    class="logo-details">
+                                  <span>{{airpods.battery}}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary modal-close"
+                                data-bs-dismiss="modal">Close</button>
+                              <span class="minus" (click)="clickMinus()">-</span>
+                              <span class="count">{{count}}</span>
+                              <span class="plus" (click)="clickPlus()">+</span>
+                              <button type="button" class="btn btn-primary" (click)="addToCart(airpods)">Add To
+                                Cart</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="more-airpods-section">
+      <div class="container more-airpods-parent">
+        <div class="row">
+          <div class="col-lg-6 more-airpods-icons">
+            <img
+              src="https://www.apple.com/mideast/airpods/u/images/en/overview/tile_onetap_setup__fzj1m8dhjoq6_large.jpg"
+              class="airpods-pic-section">
+          </div>
+          <div class="col-lg-6 more-airpods-one">
+            <p class="tile-subheadline">Bundle four Apple&nbsp;services. <br class="large">And enjoy more for
+              less.<br>Connect immediately to your iPhone or iPad.1</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
