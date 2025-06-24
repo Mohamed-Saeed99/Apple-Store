@@ -1,0 +1,224 @@
+.checkout-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.Shipping {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2ecc71;
+  background: #ecfdf5;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-align: center;
+  width: fit-content;
+  margin: 20px auto;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  animation: fadeBounce 1.5s ease-out;
+}
+
+@keyframes fadeBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#card-element {
+  padding: 16px 18px;
+  background-color: #f2f2f7;
+  border: 1px solid #c7c7cc;
+  border-radius: 16px;
+  font-size: 17px;
+  color: #1c1c1e;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#card-element:focus-within {
+  border-color: #007aff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+  transform: scale(1.01);
+}
+
+.form-group:nth-child(1) {
+  padding: 18px 16px;
+  border: 1px solid #dcdcdc;
+  background-color: #fafafa;
+  border-radius: 18px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.form-group:nth-child(1):hover,
+.form-group:nth-child(1):has(#card-element:focus-within) {
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.error {
+  color: #ff3b30;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-top: 6px;
+  padding-left: 4px;
+  line-height: 1.4;
+  letter-spacing: 0.25px;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 12px;
+  line-height: 1.3333733333;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Apple Legacy Chevron", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+.social {
+  font-size: 16px;
+  width: fit-content;
+}
+
+.social:hover {
+  transition: 0.8s;
+  transform: rotateY(180deg);
+}
+
+.fire-container {
+  position: relative;
+}
+@keyframes flameMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    text-shadow:
+      0 0 10px #ffaa00,
+      0 0 20px #ff5500,
+      0 0 30px #ff2200,
+      0 0 40px #cc0000;
+  }
+  25% {
+    transform: translateY(-2px) rotate(-1deg);
+    text-shadow:
+      0 -2px 12px #ffaa00,
+      0 -2px 24px #ff5500,
+      0 -2px 32px #ff2200,
+      0 -2px 44px #cc0000;
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+    text-shadow:
+      0 -3px 15px #ffaa00,
+      0 -3px 28px #ff5500,
+      0 -3px 38px #ff2200,
+      0 -3px 48px #cc0000;
+  }
+  75% {
+    transform: translateY(-2px) rotate(-0.5deg);
+    text-shadow:
+      0 -1px 11px #ffaa00,
+      0 -1px 22px #ff5500,
+      0 -1px 33px #ff2200,
+      0 -1px 43px #cc0000;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    text-shadow:
+      0 0 10px #ffaa00,
+      0 0 20px #ff5500,
+      0 0 30px #ff2200,
+      0 0 40px #cc0000;
+  }
+}
+
+.fire-blaze {
+  position: relative;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000000;
+  z-index: 10;
+  animation: flameMove 2s infinite ease-in-out;
+}
+
+
+

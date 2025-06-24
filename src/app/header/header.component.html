@@ -15,6 +15,8 @@
         <a class="nav-link" routerLink="/AirPods">AirPods</a>
       </div>
     </div>
+    <a class="nav-link" routerLink="/chatbot"><i class="fa-brands fa-rocketchat"></i></a>
+    <a class="nav-link" routerLink="/SignIN"><i class="fa-solid fa-right-to-bracket"></i></a>
     <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"
       aria-controls="cartOffcanvas"><i class="fa-solid fa-cart-shopping"></i><span *ngIf="cartItems.length > 0"
         class="badge rounded-pill number-of-cart">{{cartItems.length}}</span></button>
@@ -57,8 +59,10 @@
       </div>
       <div class="total-price">
         <h5>Total: {{totalPrice | currency}}</h5>
-        <button class="confirm-button" (click)="confirmCheckout()">Confirm</button>
+
+      <button type="button" class="confirm-button" (click)="confirm()">Confirm</button>
       </div>
     </div>
+          <p>If you want to return a product: <span class="footer-link social"><a class="footer-link social" href="mailto:mshamoda2003@gmail.com">contact us</a></span></p>
   </div>
 </div>

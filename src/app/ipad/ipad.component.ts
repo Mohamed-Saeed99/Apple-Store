@@ -18,9 +18,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class IpadComponent implements OnInit, AfterViewInit {
   @ViewChild('topButton') topButton!: ElementRef;
+  errorMessage: string | undefined;
+
   constructor(private services: DBServices, private renderer: Renderer2){}
   ipadData: any;
   isLoading: boolean = true;
+  searchTerm: string = '';  // Two-way binding for the search input
+  searchPrice: number | undefined ;
+  filteredData: any[] = []; // Stores filtered data based on search
+
   ngOnInit(): void {
     this.getData();
     setTimeout(() => {
@@ -28,10 +34,17 @@ export class IpadComponent implements OnInit, AfterViewInit {
     }, 2000);
   }
   getData() {
-    this.services.getAllDataIpad()
-      .subscribe((response:any) => {
-        this.ipadData =  response.data;
-      });
+    this.services.getAllDataIpad().subscribe(
+      (data) => {
+        console.log('Ipad data:', data);
+        this.ipadData = data;
+        this.filteredData = data;
+      },
+      (error) => {
+        console.error('Error fetching Ipad data:', error);
+        this.errorMessage = 'Failed to fetch Ipad data.';
+      }
+    );
   }
   ngAfterViewInit(): void {
     window.addEventListener('scroll', () => {
@@ -73,6 +86,29 @@ addToCart(ipad: any) {
     console.log('Count must be greater than zero to add to cart.');
   }
 
+}
+onSearch() {
+  if (!this.searchTerm.trim()) {
+    // If search term is empty, reset to original data
+    this.filteredData = this.ipadData;
+  } else {
+    // Filter the data based on the search term
+    this.filteredData = this.ipadData.filter((ipad: any) =>
+      ipad.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+}
+onSearchPrice() {
+  const term = this.searchPrice;
+
+  if (term === null || term === undefined ) {
+    this.filteredData = this.ipadData;
+  } else {
+    const price = +term;
+    this.filteredData = this.ipadData.filter((ipad: any) =>
+      ipad.price <= price
+    );
+  }
 }
 scrollToTop() {
   const element = document.getElementById('ipad-video');

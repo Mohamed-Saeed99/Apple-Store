@@ -1,15 +1,14 @@
 <div *ngIf="isLoading" class="spinner-container">
   <div class="spinner"></div>
 </div>
-<div *ngIf="!isLoading">
 
+<div *ngIf="!isLoading">
   <body>
     <main>
       <section class="position-relative mb-5 video-parent" id="iphone-video">
         <div class="container">
           <div class="row" [@fadeInRightBig]>
-            <video #videoPlayer autoplay loop playsinline width="100%" class="iphone-video"
-              (loadedmetadata)="muteVideo()" muted>
+            <video #videoPlayer autoplay loop playsinline width="100%" class="iphone-video" muted>
               <source
                 src="https://www.apple.com/105/media/ww/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4"
                 type="video/mp4" class="iphone-video">
@@ -21,312 +20,96 @@
         <a href="#iphone-video"><i class="fa-solid fa-arrow-up-long"></i></a>
       </button>
     </main>
-    <section class="iphone-data">
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor="let iphone of iphoneData; let i = index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="iphone.id <= 3">
-                    <img [src]="iphone.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{iphone.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
 
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{iphone.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="iphone.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <p>price:<span>{{iphone.price|currency}}</span></p>
-                                <p>storage:<span>{{iphone.storage}}</span></p>
-                                <p>ram:<span>{{iphone.ram}}</span></p>
-                                <p>color:<span>{{iphone.color}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
-                                    class="logo-details">
-                                  <span>{{iphone.camera}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{iphone.battery}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
-                                  <span>{{iphone.signal}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
-                                  <span>{{iphone.lid}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(iphone)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor=" let iphone of iphoneData; let i=index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="iphone.id > 3 && iphone.id <=6">
-                    <img [src]="iphone.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{iphone.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{iphone.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="iphone.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{iphone.name}}</h1>
-                                <p>price:<span>{{iphone.price|currency}}</span></p>
-                                <p>storage:<span>{{iphone.storage}}</span></p>
-                                <p>ram:<span>{{iphone.ram}}</span></p>
-                                <p>color:<span>{{iphone.color}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
-                                    class="logo-details">
-                                  <span>{{iphone.camera}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{iphone.battery}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
-                                  <span>{{iphone.signal}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
-                                  <span>{{iphone.lid}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(iphone)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    <section class="search-bar">
+      <div class="search-parent">
+        <form (submit)="onSearch()">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search for name..."
+            [(ngModel)]="searchTerm"
+            name="search"
+          />
+          <button type="submit" class="btn btn-primary search-button">Search</button>
+        </form>
+      </div>
+      <div class="search-parent">
+        <form (submit)="onSearchPrice()">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Search for Price..."
+            [(ngModel)]="searchPrice"
+            name="searchPrice"
+          />
+          <button type="submit" class="btn btn-primary search-button">Search</button>
+        </form>
       </div>
     </section>
+
     <section class="iphone-data">
-      <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor="let iphone of iphoneData; let i = index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="iphone.id >6 && iphone.id<= 9">
-                    <img [src]="iphone.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{iphone.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
+      <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
+        <ng-container *ngFor="let iphone of filteredData; let i = index">
+          <div class="col-lg-4 mb-3">
+            <div class="card p-5 product-card" *ngIf="iphone.id >= 1">
+              <img [src]="iphone.image" class="card-img-top product-image" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{iphone.name}}</h5>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#exampleModal' + i">
+                  Buy Now
+                </button>
 
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{iphone.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="iphone.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{iphone.name}}</h1>
-                                <p>price:<span>{{iphone.price|currency}}</span></p>
-                                <p>storage:<span>{{iphone.storage}}</span></p>
-                                <p>ram:<span>{{iphone.ram}}</span></p>
-                                <p>color:<span>{{iphone.color}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
-                                    class="logo-details">
-                                  <span>{{iphone.camera}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{iphone.battery}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
-                                  <span>{{iphone.signal}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
-                                  <span>{{iphone.lid}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(iphone)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
+                <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content modal-big">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{iphone.name}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body d-flex ">
+                        <div class="modal-img col-lg-6">
+                          <img [src]="iphone.image" class="card-img-top product-image-modal" alt="...">
                         </div>
+                        <div class="modal-description col-lg-6">
+                          <h1>{{iphone.name}}</h1>
+                          <p>price:<span>{{iphone.price|currency}}</span></p>
+                          <p>display:<span>{{iphone.display}}</span></p>
+                          <p>color:<span>{{iphone.color}}</span></p>
+                          <p>storage:<span>{{iphone.storage}}</span></p>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary modal-close"
+                          data-bs-dismiss="modal">Close</button>
+                        <span class="minus" (click)="clickMinus()" *ngIf="count > 0">-</span>
+                        <span class="count">{{count}}</span>
+                        <span class="plus" (click)="clickPlus()">+</span>
+                        <button type="button" class="btn btn-primary" (click)="addToCart(iphone)">Add To Cart</button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </ng-container>
+              </div>
             </div>
           </div>
-          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor=" let iphone of iphoneData; let i=index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="iphone.id > 9 && iphone.id <=12">
-                    <img [src]="iphone.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{iphone.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
-
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{iphone.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="iphone.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{iphone.name}}</h1>
-                                <p>price:<span>{{iphone.price|currency}}</span></p>
-                                <p>storage:<span>{{iphone.storage}}</span></p>
-                                <p>ram:<span>{{iphone.ram}}</span></p>
-                                <p>color:<span>{{iphone.color}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_13_pro_camera__fonn9igfi7qm_large.png"
-                                    class="logo-details">
-                                  <span>{{iphone.camera}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{iphone.battery}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_5g__f6zugtbm15ua_large.png" class="logo-details">
-                                  <span>{{iphone.signal}}</span>
-                                </div>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_face_id__eyzciiwkc5oy_large.png" class="logo-details">
-                                  <span>{{iphone.lid}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(iphone)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval2"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        </ng-container>
       </div>
     </section>
+    <section class="model-3d-section">
+      <div class="fire-container">
+        <h2 class="fire-blaze text-center large-centered large-10">
+          Coming Soon
+        </h2>
+      </div>
+      <div class="c-viewer">
+        <iframe title="Iphone 14 Pro 3D model - Sketchfab" class="c-viewer__iframe" src="https://sketchfab.com/models/5cb0778041a34f09b409a38c687bb1d4/embed?autostart=1&amp;internal=1&amp;tracking=0&amp;ui_ar=0&amp;ui_infos=0&amp;ui_snapshots=1&amp;ui_stop=0&amp;ui_theatre=1&amp;ui_watermark=0" id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking="true" execution-while-out-of-viewport="true" execution-while-not-rendered="true" web-share="true" allowfullscreen=""></iframe>
+      </div>
+    </section>
+
     <section class="more-iphone-section">
       <h2 class="typography-section-headline more-iphone-headline large-centered large-10">Get more out of
         your&nbsp;iPhone.</h2>
@@ -345,3 +128,4 @@
       </div>
     </section>
   </body>
+</div>

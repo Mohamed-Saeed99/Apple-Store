@@ -1,0 +1,14 @@
+<div class="chatbot-container">
+  <h3>Chat with Gemini</h3>
+  <div class="mb-3">
+    <input type="text" [(ngModel)]="message" class="form-control" placeholder="Type your message..." />
+  </div>
+  <button class="btn" (click)="sendMessage()" [disabled]="isLoading">
+    {{ isLoading ? 'Sending...' : 'Send' }}
+  </button>
+
+  <div class="mt-4" *ngIf="botReply" class="bot-reply">
+    <h5>Bot Reply:</h5>
+    <p>{{ botReply }}</p>
+  </div>
+</div>

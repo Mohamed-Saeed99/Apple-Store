@@ -1,24 +1,102 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from 'rxjs';
+
+export interface Airpods {
+  id: number;
+  name: string;
+  price: number;
+  image?: string;
+  color?: string;
+  chip?: string;
+  connectivity?: string;
+}
+
+export interface Watch {
+  id: number;
+  name: string;
+  price?: number;
+  image?: string;
+  color?: string;
+  display?: string;
+  gps?: string;
+}
+
+export interface Ipad {
+  id: number;
+  name: string;
+  price?: number;
+  image?: string;
+  color?: string;
+  display?: string;
+  usb?: string;
+}
+export interface Mac {
+  id: number;
+  name: string;
+  price?: number;
+  image?: string;
+  color?: string;
+  weight?: string;
+  type?: string;
+}
+export interface Iphone {
+  id: number;
+  name: string;
+  price?: number;
+  image?: string;
+  color?: string;
+  storage?: number;
+  ram?: number;
+}
+
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
-export class DBServices
-{
-  constructor(private http:HttpClient){}
-getAllDataIphone(){
-return this.http.get('https://api.myjson.online/v1/records/9502bd92-4e15-4962-b760-7446ef2d20fe');
-}
-getAllDataMac(){
-return this.http.get('https://api.myjson.online/v1/records/56086608-069e-44ba-832b-f3c066b67034');
-}
-getAllDataIpad(){
-return this.http.get('https://api.myjson.online/v1/records/36a5a757-e6a0-4ce2-afa2-87b4a18dcf5b');
-}
-getAllDataWatch(){
-return this.http.get('https://api.myjson.online/v1/records/3b97e3a6-1bca-4f98-b3c8-cd7805a6bb53');
-}
-getAllDataAirPods(){
-return this.http.get('https://api.myjson.online/v1/records/89ba7bcb-c2d2-43c0-a023-cf202c302874');
-}
+export class DBServices {
+  private airpodsApiUrl = 'https://new-world.runasp.net/api/Airpods';
+  private iphoneApiUrl = 'https://new-world.runasp.net/api/Iphone';
+  private macApiUrl = 'https://new-world.runasp.net/api/Mac';
+  private ipadApiUrl = 'https://new-world.runasp.net/api/Ipad';
+  private watchApiUrl = 'https://new-world.runasp.net/api/Watch';
+
+  constructor(private http: HttpClient) {}
+
+  getAllAirpods(): Observable<Airpods[]> {
+    return this.http.get<Airpods[]>(this.airpodsApiUrl);
+  }
+
+  getAllDataIphone(): Observable<Iphone[]> {
+    return this.http.get<Iphone[]>(this.iphoneApiUrl);
+  }
+
+  getAllDataMac(): Observable<Mac[]> {
+    return this.http.get<Mac[]>(this.macApiUrl);
+  }
+
+  getAllDataIpad(): Observable<Ipad[]> {
+    return this.http.get<Ipad[]>(this.ipadApiUrl);
+  }
+
+  getAllDataWatch(): Observable<Watch[]> {
+    return this.http.get<Watch[]>(this.watchApiUrl);
+  }
+
+  searchIphones(query: string): Observable<any> {
+    return this.http.get<any>(`/api/Iphone/search?name=${encodeURIComponent(query)}`);
+  }
+
+  searchIpads(query: string): Observable<any> {
+    return this.http.get<any>(`/api/Ipad/search?name=${encodeURIComponent(query)}`);
+  }
+
+  searchMacs(query: string): Observable<any> {
+    return this.http.get<any>(`/api/Mac/search?name=${encodeURIComponent(query)}`);
+  }
+  searchWatches(query: string): Observable<any> {
+    return this.http.get<any>(`/api/Watch/search?name=${encodeURIComponent(query)}`);
+  }
+  searchAirpods(query: string): Observable<any> {
+    return this.http.get<any>(`/api/Airpods/search?name=${encodeURIComponent(query)}`);
+  }
 }

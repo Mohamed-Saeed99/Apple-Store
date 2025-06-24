@@ -17,10 +17,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class WatchComponent implements OnInit, AfterViewInit  {
   @ViewChild('topButton') topButton!: ElementRef;
+  errorMessage: string | undefined;
 
   constructor(private services: DBServices, private renderer: Renderer2){}
     watchData: any;
     isLoading: boolean = true;
+    searchTerm: string = '';  // Two-way binding for the search input
+    searchPrice: number | undefined ;
+    filteredData: any[] = []; // Stores filtered data based on search
     ngOnInit(): void {
       this.getData();
       setTimeout(() => {
@@ -28,10 +32,17 @@ export class WatchComponent implements OnInit, AfterViewInit  {
       }, 2000);
     }
     getData() {
-      this.services.getAllDataWatch()
-        .subscribe((response:any) => {
-          this.watchData =  response.data;
-        });
+      this.services.getAllDataWatch().subscribe(
+        (data) => {
+          console.log('Watch data:', data);
+          this.watchData = data;
+          this.filteredData = data;
+        },
+        (error) => {
+          console.error('Error fetching Watch data:', error);
+          this.errorMessage = 'Failed to fetch Watch data.';
+        }
+      );
     }
         ngAfterViewInit(): void {
       window.addEventListener('scroll', () => {
@@ -72,6 +83,29 @@ export class WatchComponent implements OnInit, AfterViewInit  {
       console.log('Count must be greater than zero to add to cart.');
     }
 
+  }
+  onSearch() {
+    if (!this.searchTerm.trim()) {
+      // If search term is empty, reset to original data
+      this.filteredData = this.watchData;
+    } else {
+      // Filter the data based on the search term
+      this.filteredData = this.watchData.filter((watch: any) =>
+        watch.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+  onSearchPrice() {
+    const term = this.searchPrice;
+
+    if (term === null || term === undefined ) {
+      this.filteredData = this.watchData;
+    } else {
+      const price = +term;
+      this.filteredData = this.watchData.filter((watch: any) =>
+        watch.price <= price
+      );
+    }
   }
   scrollToTop() {
     const element = document.getElementById('watch-video');

@@ -1,68 +1,60 @@
-@import "~@fortawesome/fontawesome-free/css/all.css";
-
-footer {
-  position: relative;
-  height: 400px;
-  padding-top: 50px;
-  background-color: rgb(245, 245, 247);
+.footer-custom {
+  background-color: #f5f5f7;
+  padding: 30px 15px;
 }
 
-@media (max-width:992px) {
-  footer {
-    height: 660px;
-  }
-}
-
-@media (max-width:768px) {
-  footer {
-    height: 925px;
-  }
-}
-
-.footer-head {
-  margin-bottom: 10px;
-  margin-left: 30px;
-  font-size: 12px;
-  line-height: 1.3333733333;
-  letter-spacing: -0.01em;
-  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Apple Legacy Chevron", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.88);
-}
-
-.footer-ul {
-  height: 230px;
-  list-style: none;
+.footer-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 
-.footer-link {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.56);
-  font-size: 12px;
-  line-height: 1.3333733333;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Apple Legacy Chevron", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-
-.footer-link:hover {
-  text-decoration: underline;
-}
-
-.social {
-  font-size: 16px;
-  width: fit-content;
-}
-
-.social:hover {
-  transition: 0.8s;
-  transform: rotateY(180deg);
-}
-
-.footer-copyright {
+.footer-box {
+  flex: 1;
+  min-width: 0;
   text-align: center;
-  font-size: 12px;
+}
+
+.footer-box h5 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-box ul li {
+  margin: 4px 0;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  font-size: 13px;
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  width: 30px;
+  height: 30px;
+  background-color: #eee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 14px;
 }

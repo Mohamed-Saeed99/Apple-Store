@@ -14,7 +14,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DBServices } from './db.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './products/products.component';
+import { SginINComponent } from './sgin-in/sgin-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +34,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     MacComponent,
     WatchComponent,
     AirpodsComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    ProductsComponent,
+    SginINComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    ChatbotComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     DBServices,

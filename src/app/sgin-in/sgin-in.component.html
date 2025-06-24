@@ -1,0 +1,45 @@
+<body>
+  <main>
+    <section class="form-section">
+      <div class="form-parent">
+        <h1>Welcome</h1>
+        <p>Sign in with your Info</p>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div>
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="name"
+              name="name"
+              required
+            />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              [(ngModel)]="password"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" [disabled]="!loginForm.form.valid">
+            Sign In
+          </button>
+        </form>
+        <div>
+        <a href="forgot-password">Forgot Password?</a>
+      </div>
+        <button type="button" class="sign-up-button" (click)="onSignUp()">
+          Sign Up
+        </button>
+        <div>
+        <P class="admin">for admins</P>
+        <a class="nav-link" routerLink="/Login"><i class="fa-solid fa-right-to-bracket"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

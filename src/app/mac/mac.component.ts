@@ -17,10 +17,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class MacComponent implements OnInit, AfterViewInit {
   @ViewChild('topButton') topButton!: ElementRef;
+  errorMessage: string | undefined;
 
   constructor(private services: DBServices, private renderer: Renderer2){}
     macData: any;
     isLoading: boolean = true;
+    searchTerm: string = '';  // Two-way binding for the search input
+    searchPrice: number | undefined ;
+    filteredData: any[] = []; // Stores filtered data based on search
     ngOnInit(): void {
       this.getData();
       setTimeout(() => {
@@ -28,10 +32,17 @@ export class MacComponent implements OnInit, AfterViewInit {
       }, 2000);
     }
     getData() {
-      this.services.getAllDataMac()
-        .subscribe((response:any) => {
-          this.macData =  response.data;
-        });
+      this.services.getAllDataMac().subscribe(
+        (data) => {
+          console.log('Mac data:', data);
+          this.macData = data;
+          this.filteredData = data;
+        },
+        (error) => {
+          console.error('Error fetching Mac data:', error);
+          this.errorMessage = 'Failed to fetch Mac data.';
+        }
+      );
     }
     ngAfterViewInit(): void {
       window.addEventListener('scroll', () => {
@@ -74,6 +85,30 @@ export class MacComponent implements OnInit, AfterViewInit {
     }
 
   }
+  onSearch() {
+    if (!this.searchTerm.trim()) {
+      // If search term is empty, reset to original data
+      this.filteredData = this.macData;
+    } else {
+      // Filter the data based on the search term
+      this.filteredData = this.macData.filter((mac: any) =>
+        mac.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+  onSearchPrice() {
+    const term = this.searchPrice;
+
+    if (term === null || term === undefined ) {
+      this.filteredData = this.macData;
+    } else {
+      const price = +term;
+      this.filteredData = this.macData.filter((mac: any) =>
+        mac.price <= price
+      );
+    }
+  }
+
   scrollToTop() {
     const element = document.getElementById('mac-video');
     if (element) {

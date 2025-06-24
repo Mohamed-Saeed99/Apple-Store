@@ -4,6 +4,7 @@
   background-color: rgba(0, 0, 0, .8);
   padding: 2px;
   position: fixed;
+  top: 0px;
   width: 100%;
   z-index: 999;
 }
@@ -16,12 +17,6 @@
   }
 }
 
-
-.navbar-collapse {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .nav-link,
 .navbar-brand {
@@ -53,6 +48,10 @@
   font-size: 16px;
   font-weight: 500;
 }
+.navbar-collapse {
+ justify-content: center;
+}
+
 
 /* ------------------------cart body----------------------------- */
 .offcanvas-body {
@@ -121,14 +120,12 @@
   font-size: 1.1rem;
 }
 
-/* --------------------------number of cart --------------- */
 .number-of-cart {
   background-color: #e0e0e0;
   color: #333;
 }
 
-/* ----------------------------check out -------------------------- */
-/* CSS for Apple-inspired checkout button */
+
 .checkout-button {
   background-color: #0070c9;
   color: white;
@@ -144,7 +141,6 @@
   background-color: #0056a0;
 }
 
-/* CSS for Apple-inspired invoice section */
 .invoice {
   background-color: #f8f9fa;
   border: 1px solid #e9ecef;
@@ -203,4 +199,27 @@
 
 .confirm-button:hover {
   background-color: #45a049;
+}
+
+
+.footer-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.56) !important;
+  font-size: 12px;
+  line-height: 1.3333733333;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Apple Legacy Chevron", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+.social {
+  font-size: 16px;
+  width: fit-content;
+}
+
+.social:hover {
+  transition: 0.8s;
+  transform: rotateY(180deg);
 }

@@ -1,0 +1,311 @@
+<body>
+  <main>
+    <div class="container mt-5">
+      <h1>Product List</h1>
+      <div *ngFor="let category of objectKeys(categorizedProducts)" class="category-section">
+        <h2>{{ category }}</h2>
+        <button class="btn btn-success mb-3" (click)="openCreateModal(category)">Create New Product</button>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of categorizedProducts[category]; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price | currency }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="openEditModal(product, category)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id, category)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+        <!-- Modal for Creating Product -->
+        <div class="modal" tabindex="-1" [ngClass]="{ show: isCreateModalOpen }" style="display: block; background: rgba(0, 0, 0, 0.5)" *ngIf="isCreateModalOpen">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create New Product - {{ createCategory }}</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="closeCreateModal()"></button>
+              </div>
+              <div class="modal-body">
+                <form (ngSubmit)="createProduct()">
+                  <!-- Name -->
+                  <div class="mb-3">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input id="productName" class="form-control" [(ngModel)]="newProduct.name" name="name" required />
+                  </div>
+                  <!-- Price -->
+                  <div class="mb-3">
+                    <label for="productPrice" class="form-label">Price</label>
+                    <input id="productPrice" type="number" class="form-control" [(ngModel)]="newProduct.price" name="price" required />
+                  </div>
+                  <!-- Color -->
+                  <div class="mb-3" *ngIf="newProduct.color !== undefined">
+                    <label for="productColor" class="form-label">Color</label>
+                    <input id="productColor" class="form-control" [(ngModel)]="newProduct.color" name="color" />
+                  </div>
+                  <!-- Image -->
+                  <div class="mb-3" *ngIf="newProduct.image !== undefined">
+                    <label for="productImage" class="form-label">Image URL</label>
+                    <input id="productImage" class="form-control" [(ngModel)]="newProduct.image" name="image" />
+                  </div>
+                  <!-- Specific Fields for Category -->
+                  <div *ngIf="createCategory === 'iPhone'">
+                    <div class="mb-3">
+                      <label for="productStorage" class="form-label">Storage (GB)</label>
+                      <input id="productStorage" type="number" class="form-control" [(ngModel)]="newProduct.storage" name="storage" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="productRam" class="form-label">RAM (GB)</label>
+                      <input id="productRam" type="number" class="form-control" [(ngModel)]="newProduct.ram" name="ram" />
+                    </div>
+                  </div>
+                  <div *ngIf="createCategory === 'AirPods'">
+                    <div class="mb-3">
+                      <label for="productChip" class="form-label">Chip</label>
+                      <input id="productChip" class="form-control" [(ngModel)]="newProduct.chip" name="chip" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="productConnectivity" class="form-label">Connectivity</label>
+                      <input id="productConnectivity" class="form-control" [(ngModel)]="newProduct.connectivity" name="connectivity" />
+                    </div>
+                  </div>
+                  <div *ngIf="createCategory === 'Mac'">
+                    <div class="mb-3">
+                      <label for="productWeight" class="form-label">Weight</label>
+                      <input id="productWeight" class="form-control" [(ngModel)]="newProduct.weight" name="weight" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="productType" class="form-label">Type</label>
+                      <input id="productType" class="form-control" [(ngModel)]="newProduct.type" name="type" />
+                    </div>
+                  </div>
+                  <div *ngIf="createCategory === 'Watch'">
+                    <div class="mb-3">
+                      <label for="productDisplay" class="form-label">Display</label>
+                      <input id="productDisplay" class="form-control" [(ngModel)]="newProduct.display" name="display" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="productGps" class="form-label">Gps</label>
+                      <input id="productGps" class="form-control" [(ngModel)]="newProduct.gps" name="gps" />
+                    </div>
+                  </div>
+                  <div *ngIf="createCategory === 'iPad'">
+                    <div class="mb-3">
+                      <label for="productDisplay" class="form-label">Display</label>
+                      <input
+                        id="productDisplay"
+                        class="form-control"
+                        [(ngModel)]="newProduct.display"
+                        name="display"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="productUsb" class="form-label">USB</label>
+                      <input
+                        id="productUsb"
+                        class="form-control"
+                        [(ngModel)]="newProduct.usb"
+                        name="usb"
+                      />
+                    </div>
+                  </div>
+                  <!-- Submit & Cancel Buttons -->
+                  <button type="submit" class="btn btn-success">Create Product</button>
+                  <button type="button" class="btn btn-secondary" (click)="closeCreateModal()">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <!-- Modal for Editing Product -->
+<div
+class="modal"
+tabindex="-1"
+[ngClass]="{ show: isEditModalOpen }"
+style="display: block; background: rgba(0, 0, 0, 0.5)"
+*ngIf="isEditModalOpen"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Edit Product - {{ editableCategory }}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="closeEditModal()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="updateProduct()">
+        <!-- Name -->
+        <div class="mb-3">
+          <label for="productName" class="form-label">Product Name</label>
+          <input
+            id="productName"
+            class="form-control"
+            [(ngModel)]="editableProduct.name"
+            name="name"
+            required
+          />
+        </div>
+        <!-- Price -->
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Price</label>
+          <input
+            id="productPrice"
+            type="number"
+            class="form-control"
+            [(ngModel)]="editableProduct.price"
+            name="price"
+            required
+          />
+        </div>
+        <!-- Color -->
+        <div class="mb-3" *ngIf="editableProduct.color !== undefined">
+          <label for="productColor" class="form-label">Color</label>
+          <input
+            id="productColor"
+            class="form-control"
+            [(ngModel)]="editableProduct.color"
+            name="color"
+          />
+        </div>
+        <!-- Image -->
+        <div class="mb-3" *ngIf="editableProduct.image !== undefined">
+          <label for="productImage" class="form-label">Image URL</label>
+          <input
+            id="productImage"
+            class="form-control"
+            [(ngModel)]="editableProduct.image"
+            name="image"
+          />
+        </div>
+        <!-- Specific Fields for iPhone -->
+        <div *ngIf="editableCategory === 'iPhone'">
+          <div class="mb-3">
+            <label for="productStorage" class="form-label">Storage (GB)</label>
+            <input
+              id="productStorage"
+              type="number"
+              class="form-control"
+              [(ngModel)]="editableProduct.storage"
+              name="storage"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productRam" class="form-label">RAM (GB)</label>
+            <input
+              id="productRam"
+              type="number"
+              class="form-control"
+              [(ngModel)]="editableProduct.ram"
+              name="ram"
+            />
+          </div>
+        </div>
+        <!-- Specific Fields for Mac -->
+        <div *ngIf="editableCategory === 'Mac'">
+          <div class="mb-3">
+            <label for="productWeight" class="form-label">Weight</label>
+            <input
+              id="productWeight"
+              class="form-control"
+              [(ngModel)]="editableProduct.weight"
+              name="weight"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productType" class="form-label">Type</label>
+            <input
+              id="productType"
+              class="form-control"
+              [(ngModel)]="editableProduct.type"
+              name="type"
+            />
+          </div>
+        </div>
+        <!-- Specific Fields for iPad -->
+        <div *ngIf="editableCategory === 'iPad'">
+          <div class="mb-3">
+            <label for="productDisplay" class="form-label">Display</label>
+            <input
+              id="productDisplay"
+              class="form-control"
+              [(ngModel)]="editableProduct.display"
+              name="display"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productUsb" class="form-label">USB</label>
+            <input
+              id="productUsb"
+              class="form-control"
+              [(ngModel)]="editableProduct.usb"
+              name="usb"
+            />
+          </div>
+        </div>
+        <!-- Specific Fields for Watch -->
+        <div *ngIf="editableCategory === 'Watch'">
+          <div class="mb-3">
+            <label for="productDisplay" class="form-label">Display</label>
+            <input
+              id="productDisplay"
+              class="form-control"
+              [(ngModel)]="editableProduct.display"
+              name="display"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productGps" class="form-label">GPS</label>
+            <input
+              id="productGps"
+              class="form-control"
+              [(ngModel)]="editableProduct.gps"
+              name="gps"
+            />
+          </div>
+        </div>
+        <!-- Specific Fields for AirPods -->
+        <div *ngIf="editableCategory === 'AirPods'">
+          <div class="mb-3">
+            <label for="productChip" class="form-label">Chip</label>
+            <input
+              id="productChip"
+              class="form-control"
+              [(ngModel)]="editableProduct.chip"
+              name="chip"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="productConnectivity" class="form-label">Connectivity</label>
+            <input
+              id="productConnectivity"
+              class="form-control"
+              [(ngModel)]="editableProduct.connectivity"
+              name="connectivity"
+            />
+          </div>
+        </div>
+        <!-- Submit & Cancel Buttons -->
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+  </main>
+</body>

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 import { DBServices } from '../db.services';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+
 @Component({
   selector: 'app-iphone',
   templateUrl: './iphone.component.html',
@@ -16,13 +17,16 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class IphoneComponent implements OnInit, AfterViewInit {
-  @ViewChild('videoPlayer') videoPlayer!: ElementRef;
   @ViewChild('topButton') topButton!: ElementRef;
+  errorMessage: string | undefined;
 
 
   iphoneData: any;
   count: number = 0;
   isLoading: boolean = true;
+  searchTerm: string = '';
+  searchPrice: number | undefined ;
+  filteredData: any[] = []; // Stores filtered data based on search
 
   constructor(private services: DBServices, private renderer: Renderer2) {}
 
@@ -34,18 +38,19 @@ export class IphoneComponent implements OnInit, AfterViewInit {
   }
 
   getData() {
-    this.services.getAllDataIphone()
-      .subscribe((response: any) => {
-        this.iphoneData = response.data;
-      });
+    this.services.getAllDataIphone().subscribe(
+      (data) => {
+        this.iphoneData = data;
+        this.filteredData = data;
+      },
+      (error) => {
+        console.error('Error fetching Iphone data:', error);
+        this.errorMessage = 'Failed to fetch Iphone data.';
+      }
+    );
   }
 
   ngAfterViewInit(): void {
-    if (this.videoPlayer && this.videoPlayer.nativeElement) {
-      this.videoPlayer.nativeElement.addEventListener('canplay', () => {
-        this.muteVideo();
-      });
-    }
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 500) {
         this.renderer.setStyle(this.topButton.nativeElement, 'opacity', '1');
@@ -54,15 +59,6 @@ export class IphoneComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  muteVideo(): void {
-    if (this.videoPlayer && this.videoPlayer.nativeElement) {
-      this.videoPlayer.nativeElement.muted = true;
-      console.log('Video muted:', this.videoPlayer.nativeElement.muted);
-    }
-  }
-
-
 
   clickPlus() {
     this.count++;
@@ -89,6 +85,30 @@ export class IphoneComponent implements OnInit, AfterViewInit {
       console.log('Count must be greater than zero to add to cart.');
     }
   }
+  onSearch() {
+    if (!this.searchTerm.trim()) {
+      // If search term is empty, reset to original data
+      this.filteredData = this.iphoneData;
+    } else {
+      // Filter the data based on the search term
+      this.filteredData = this.iphoneData.filter((iphone: any) =>
+        iphone.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+  onSearchPrice() {
+    const term = this.searchPrice;
+
+    if (term === null || term === undefined ) {
+      this.filteredData = this.iphoneData;
+    } else {
+      const price = +term;
+      this.filteredData = this.iphoneData.filter((iphone: any) =>
+        iphone.price <= price
+      );
+    }
+  }
+
   scrollToTop() {
     const element = document.getElementById('iphone-video');
     if (element) {

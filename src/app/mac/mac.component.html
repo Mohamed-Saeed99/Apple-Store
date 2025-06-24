@@ -19,278 +19,95 @@
         <a href="#mac-video"><i class="fa-solid fa-arrow-up-long"></i></a>
       </button>
     </main>
-    <section class="mac-data">
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor="let mac of macData; let i = index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="mac.id <= 3">
-                    <img [src]="mac.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{mac.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{mac.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="mac.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{mac.name}}</h1>ng
-                                <p>price:<span>{{mac.price|currency}}</span></p>
-                                <p>description:<span>{{mac.description}}</span></p>
-                                <p>type:<span>{{mac.type}}</span></p>
-                                <p>color:<span>{{mac.color}}</span></p>
-                                <p>weight:<span>{{mac.weight}}</span></p>
-                                <p>screen:<span>{{mac.screen}}</span></p>
-                                <p>chip:<span>{{mac.chip}}</span></p>
-                                <p>ports:<span>{{mac.ports}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{mac.battery}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(mac)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor=" let mac of macData; let i=index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="mac.id > 3 && mac.id <=6">
-                    <img [src]="mac.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{mac.name}}</h5>
-
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
-
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{mac.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="mac.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{mac.name}}</h1>
-                                <p>price:<span>{{mac.price|currency}}</span></p>
-                                <p>description:<span>{{mac.description}}</span></p>
-                                <p>type:<span>{{mac.type}}</span></p>
-                                <p>color:<span>{{mac.color}}</span></p>
-                                <p>weight:<span>{{mac.weight}}</span></p>
-                                <p>screen:<span>{{mac.screen}}</span></p>
-                                <p>chip:<span>{{mac.chip}}</span></p>
-                                <p>ports:<span>{{mac.ports}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{mac.battery}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(mac)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+    <section class="search-bar">
+      <div class="search-parent">
+        <form (submit)="onSearch()">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search for name..."
+            [(ngModel)]="searchTerm"
+            name="search"
+          />
+          <button type="submit" class="btn btn-primary search-button">Search</button>
+        </form>
+      </div>
+      <div class="search-parent">
+        <form (submit)="onSearchPrice()">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Search for Price..."
+            [(ngModel)]="searchPrice"
+            name="searchPrice"
+          />
+          <button type="submit" class="btn btn-primary search-button">Search</button>
+        </form>
       </div>
     </section>
+
     <section class="mac-data">
-      <div id="carouselExampleInterval2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor="let mac of macData; let i = index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="mac.id >6 && mac.id<= 9">
-                    <img [src]="mac.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{mac.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
+      <div class="container">
+        <div class="row">
+          <ng-container *ngFor="let mac of filteredData; let i = index">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+              <div class="card p-5 product-card">
+                <img [src]="mac.image" class="card-img-top product-image" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{mac.name}}</h5>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">
+                    Buy Now
+                  </button>
 
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{mac.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="mac.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{mac.name}}</h1>
-                                <p>price:<span>{{mac.price|currency}}</span></p>
-                                <p>description:<span>{{mac.description}}</span></p>
-                                <p>type:<span>{{mac.type}}</span></p>
-                                <p>color:<span>{{mac.color}}</span></p>
-                                <p>weight:<span>{{mac.weight}}</span></p>
-                                <p>screen:<span>{{mac.screen}}</span></p>
-                                <p>chip:<span>{{mac.chip}}</span></p>
-                                <p>ports:<span>{{mac.ports}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{mac.battery}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(mac)">Add To
-                                Cart</button>
-                            </div>
+                  <!-- Modal -->
+                  <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content modal-big">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">{{mac.name}}</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                          <div class="modal-img col-lg-6">
+                            <img [src]="mac.image" class="card-img-top product-image-modal" alt="...">
                           </div>
+                          <div class="modal-description col-lg-6">
+                            <h1>{{mac.name}}</h1>
+                            <p>Price: <span>{{mac.price | currency}}</span></p>
+                            <p>Type: <span>{{mac.type}}</span></p>
+                            <p>Color: <span>{{mac.color}}</span></p>
+                            <p>Weight: <span>{{mac.weight}}</span></p>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary modal-close" data-bs-dismiss="modal">Close</button>
+                          <span class="minus" (click)="clickMinus()"*ngIf="count > 0">-</span>
+                          <span class="count">{{count}}</span>
+                          <span class="plus" (click)="clickPlus()">+</span>
+                          <button type="button" class="btn btn-primary" (click)="addToCart(mac)">Add To Cart</button>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <!-- End Modal -->
                 </div>
-              </ng-container>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item" data-bs-interval="2000" style="padding: 0 70px;">
-            <div class="d-flex flex-wrap justify-content-center" style="margin-top: 20px;">
-              <ng-container *ngFor=" let mac of macData; let i=index">
-                <div class="col-lg-4 mb-3">
-                  <div class="card p-5 product-card" *ngIf="mac.id > 9 && mac.id <=12">
-                    <img [src]="mac.image" class="card-img-top product-image" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">{{mac.name}}</h5>
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        [attr.data-bs-target]="'#exampleModal' + i">
-                        Buy Now
-                      </button>
-
-                      <div class="modal fade" [id]="'exampleModal' + i" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content modal-big">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">{{mac.name}}</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body d-flex ">
-                              <div class="modal-img col-lg-6">
-                                <img [src]="mac.image" class="card-img-top product-image-modal" alt="...">
-                              </div>
-                              <div class="modal-description col-lg-6">
-                                <h1>{{mac.name}}</h1>
-                                <p>price:<span>{{mac.price|currency}}</span></p>
-                                <p>description:<span>{{mac.description}}</span></p>
-                                <p>type:<span>{{mac.type}}</span></p>
-                                <p>color:<span>{{mac.color}}</span></p>
-                                <p>weight:<span>{{mac.weight}}</span></p>
-                                <p>screen:<span>{{mac.screen}}</span></p>
-                                <p>chip:<span>{{mac.chip}}</span></p>
-                                <p>ports:<span>{{mac.ports}}</span></p>
-                                <div class="specification">
-                                  <img src="https://www.apple.com/v/iphone/home/bi/images/overview/compare/icon_battery__wqowcbwj50y2_large.png" class="logo-details">
-                                  <span>{{mac.battery}}</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary modal-close"
-                                data-bs-dismiss="modal">Close</button>
-                              <span class="minus" (click)="clickMinus()">-</span>
-                              <span class="count">{{count}}</span>
-                              <span class="plus" (click)="clickPlus()">+</span>
-                              <button type="button" class="btn btn-primary" (click)="addToCart(mac)">Add To
-                                Cart</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-container>
-            </div>
-          </div>
+          </ng-container>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval2"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </section>
+    <section class="model-3d-section">
+      <div class="fire-container">
+        <h2 class="fire-blaze text-center large-centered large-10">
+          Coming Soon
+        </h2>
+      </div>
+      <div class="c-viewer">
+        <iframe title="Apple Mac Mini for Element 3D 3D model - Sketchfab" class="c-viewer__iframe" src="https://sketchfab.com/models/fbfe1d9214bd40818755fe6d05b4afec/embed?autostart=1&amp;internal=1&amp;tracking=0&amp;ui_infos=0&amp;ui_snapshots=1&amp;ui_stop=0&amp;ui_theatre=1&amp;ui_watermark=0" id="api-frame" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking="true" execution-while-out-of-viewport="true" execution-while-not-rendered="true" web-share="true" allowfullscreen=""></iframe>
+      </div>
+    </section>
+
     <section class="more-mac-section">
       <div class="container more-mac-parent">
         <div class="row">

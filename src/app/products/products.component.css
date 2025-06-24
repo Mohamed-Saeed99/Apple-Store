@@ -1,0 +1,82 @@
+/* Container Styling */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f8f9fa; /* Light gray background */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.container h1 {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #343a40; /* Dark gray */
+  margin-bottom: 20px;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff; /* White table background */
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 0;
+}
+
+.table th {
+  background-color: #343a40; /* Dark header background */
+  color: #fff; /* White header text */
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+.table td {
+  padding: 10px;
+  color: #495057; /* Muted text */
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Row Striping */
+.table tbody tr:nth-child(odd) {
+  background-color: #f8f9fa; /* Light gray for odd rows */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #e9ecef; /* Slightly darker gray for even rows */
+}
+
+/* Table Borders */
+.table-bordered {
+  border: 1px solid #dee2e6; /* Light border for the table */
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6; /* Cell borders */
+}
+
+/* Hover Effect for Rows */
+.table tbody tr:hover {
+  background-color: #f1f3f5; /* Light hover effect */
+  cursor: pointer;
+  transform: scale(1.01); /* Slight zoom on hover */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+  .container h1 {
+    font-size: 20px;
+  }
+}

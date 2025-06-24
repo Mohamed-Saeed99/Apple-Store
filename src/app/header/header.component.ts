@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  cartItems: any[] = [];
+  totalPrice: number = 0;
+  showInvoiceFlag: boolean = false;
+  apiUrl = 'https://localhost:7054/api/Purchased';
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCartItems();
   }
-  cartItems: any[] = [];
-  totalPrice: number = 0;
+
 
 
   loadCartItems() {
@@ -31,18 +37,32 @@ export class HeaderComponent implements OnInit {
     this.cartItems.splice(index, 1);
     this.updateLocalStorage();
     this.calculateTotalPrice();
+    if (this.cartItems.length === 0) {
+      localStorage.removeItem('cartItems');
+    }
   }
   updateLocalStorage() {
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
-  showInvoiceFlag = false;
-  showInvoice() {
-    this.showInvoiceFlag = true;
+
+   showInvoice() {
+     this.showInvoiceFlag = true;
   }
+
   hideInvoice() {
     this.showInvoiceFlag = false;
   }
-  confirmCheckout() {
-    console.log('Checkout confirmed!');
+  confirm() {
+    const login = localStorage.getItem('logincheck');
+
+    if (login) {
+      console.log('User is signed in, navigating to /Checkout');
+      this.router.navigate(['/Checkout']);
+    } else {
+      console.log('User not signed in, navigating to /SignIN');
+      this.router.navigate(['/SignIN']);
+    }
   }
+
+
 }

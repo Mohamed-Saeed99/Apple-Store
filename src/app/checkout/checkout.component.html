@@ -1,0 +1,120 @@
+<div class="checkout-container">
+  <h2>Confirm Your Purchase</h2>
+     <div class="model-3d-section">
+      <div class="fire-container">
+        <h2 class="fire-blaze text-center large-centered large-10">
+          The installment system will be available very soon.
+        </h2>
+      </div>
+     </div>
+      <p class="Shipping">Shipping costs are free</p>
+  <div *ngFor="let item of cartItems" class="invoice-item">
+    <h5>{{item.name}} - Price: {{item.price | currency}}</h5>
+  </div>
+  <div class="invoice-item">
+    <h5>Total: {{totalPrice | currency}}</h5>
+  </div>
+<form (ngSubmit)="onSubmit()" #checkoutForm="ngForm" novalidate>
+
+  <div class="form-group">
+    <label for="card-element">Credit Card</label>
+    <div id="card-element"></div>
+    <div *ngIf="cardErrors" class="error">
+      {{ cardErrors }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="userName">User Name</label>
+    <input
+      type="text"
+      id="userName"
+      name="userName"
+      [(ngModel)]="purchase.userName"
+      #userName="ngModel"
+      required
+      minlength="3"
+      pattern="^[a-zA-Z\s]+$"
+    />
+    <div class="error" *ngIf="userName.invalid && userName.touched">
+      <small *ngIf="userName.errors?.['required']">Name is required.</small>
+      <small *ngIf="userName.errors?.['minlength']">Minimum 3 characters.</small>
+      <small *ngIf="userName.errors?.['pattern']">Only letters and spaces allowed.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="purchase.email"
+      #email="ngModel"
+      required
+      email
+    />
+    <div class="error" *ngIf="email.invalid && email.touched">
+      <small *ngIf="email.errors?.['required']">Email is required.</small>
+      <small *ngIf="email.errors?.['email']">Enter a valid email.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      type="text"
+      id="city"
+      name="city"
+      [(ngModel)]="purchase.city"
+      #city="ngModel"
+      required
+    />
+    <div class="error" *ngIf="city.invalid && city.touched">
+      <small>City is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input
+      type="text"
+      id="address"
+      name="address"
+      [(ngModel)]="purchase.address"
+      #address="ngModel"
+      required
+      minlength="5"
+    />
+    <div class="error" *ngIf="address.invalid && address.touched">
+      <small *ngIf="address.errors?.['required']">Address is required.</small>
+      <small *ngIf="address.errors?.['minlength']">Minimum 5 characters.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number</label>
+    <input
+      type="tel"
+      id="phoneNumber"
+      name="phoneNumber"
+      [(ngModel)]="purchase.phoneNumber"
+      #phoneNumber="ngModel"
+      required
+      pattern="^[0-9]{10,15}$"
+    />
+    <div class="error" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+      <small *ngIf="phoneNumber.errors?.['required']">Phone number is required.</small>
+      <small *ngIf="phoneNumber.errors?.['pattern']">Enter a valid number (10-15 digits).</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="checkoutForm.invalid">
+    Confirm Purchase
+  </button>
+</form>
+
+         <p>if you have problem contact us : <a class="footer-link social" href="mailto:mshamoda2003@gmail.com"><i
+              class="fa-solid fa-envelope"></i></a></p>
+
+</div>
