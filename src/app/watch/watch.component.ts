@@ -22,9 +22,9 @@ export class WatchComponent implements OnInit, AfterViewInit  {
   constructor(private services: DBServices, private renderer: Renderer2){}
     watchData: any;
     isLoading: boolean = true;
-    searchTerm: string = '';  // Two-way binding for the search input
+    searchTerm: string = '';
     searchPrice: number | undefined ;
-    filteredData: any[] = []; // Stores filtered data based on search
+    filteredData: any[] = [];
     ngOnInit(): void {
       this.getData();
       setTimeout(() => {
