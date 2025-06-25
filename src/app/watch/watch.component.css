@@ -357,6 +357,10 @@ body {
     flex: none;
     width: 100%;
     padding: 10px;
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
   }
 
   .modal-description {
@@ -664,6 +668,9 @@ body {
   .search-bar .form-control,
   .search-bar .search-button {
     width: 100%; /* Make input and button full width */
+  }
+      .search-bar .search-button {
+    margin: 10px 0px 0px 0px;
   }
 }
 

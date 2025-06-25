@@ -14,11 +14,11 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   categorizedProducts: { [category: string]: any[] } = {};
   apiUrls: { [key: string]: string } = {
-    Watch: 'http://new-world.runasp.net/api/Watch',
-    iPad: 'http://new-world.runasp.net/api/Ipad',
-    Mac: 'http://new-world.runasp.net/api/Mac',
-    iPhone: 'http://new-world.runasp.net/api/Iphone',
-    AirPods: 'http://new-world.runasp.net/api/Airpods'
+    Watch: 'https://new-world.runasp.net/api/Watch',
+    iPad: 'https://new-world.runasp.net/api/Ipad',
+    Mac: 'https://new-world.runasp.net/api/Mac',
+    iPhone: 'https://new-world.runasp.net/api/Iphone',
+    AirPods: 'https://new-world.runasp.net/api/Airpods'
   };
 
   isEditModalOpen = false;

@@ -30,6 +30,8 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 20px;
+
 
 }
 
@@ -46,7 +48,7 @@ body {
 }
 
 .product-card {
-  width: 28rem;
+  width: 100%;
   border-radius: 20px;
   background-color: #fff;
   position: relative;
@@ -58,37 +60,37 @@ body {
 
 @media (max-width: 460px) {
   .product-card {
-    width: 24rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 400px) {
   .product-card {
-    width: 21rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 360px) {
   .product-card {
-    width: 18rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 360px) {
   .product-card {
-    width: 15rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 250px) {
   .product-card {
-    width: 13rem;
+    width: 100%;
   }
 }
 
 @media (max-width: 200px) {
   .product-card {
-    width: 10rem;
+    width: 100%;
   }
 }
 
@@ -359,9 +361,14 @@ body {
 
   .modal-img,
   .modal-description {
-    flex: none;
+    height: 500px;
     width: 100%;
-    padding: 10px;
+    object-fit: cover;
+    border-radius: 20px;
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
   }
 
   .modal-description {
@@ -660,6 +667,11 @@ body {
   .search-bar .search-button {
     width: 100%; /* Make input and button full width */
   }
+    .search-bar .search-button {
+
+  margin: 10px 0px 0px 0px;
+
+}
 }
 
 /*-----------------------------3d model---------------------------------*/
@@ -739,4 +751,3 @@ body {
   z-index: 10;
   animation: flameMove 2s infinite ease-in-out;
 }
-
