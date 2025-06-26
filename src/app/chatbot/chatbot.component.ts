@@ -14,7 +14,7 @@ export class ChatbotComponent implements OnInit {
 
   constructor(private chatbotService: ChatbotService) {}
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+
   }
   sendMessage() {
     if (!this.message.trim()) {
@@ -33,7 +33,7 @@ export class ChatbotComponent implements OnInit {
       },
       error: (err) => {
         console.error("Error during request: ", err);
-        this.botReply = 'Error: Failed to connect to server';
+        this.botReply = 'Sorry, I could not process your request at the moment.';
         this.isLoading = false;
       }
     });
