@@ -33,7 +33,7 @@ export class ChatbotComponent implements OnInit {
       },
       error: (err) => {
         console.error("Error during request: ", err);
-        this.botReply = 'Sorry, I could not process your request at the moment.';
+        this.botReply = 'Bad request, I could not process your request at the moment.';
         this.isLoading = false;
       }
     });
